@@ -1,4 +1,60 @@
-<x-layout>
+<x-layouts.auth>
+    <x-slot:title>
+        Регистрация аккаунта
+    </x-slot:title>
+
+    <x-card>
+        <x-card.body>
+            <x-form action="{{ route('registration.store') }}" method="post">
+                <x-form.item>
+                    <x-form.label>Ваше имя</x-form.label>
+                    <x-form.input name="first_name" placeholder="Иван" autofocus />
+                </x-form.item>
+
+                <x-form.item>
+                    <x-form.label>Ваш email</x-form.label>
+                    <x-form.input name="email" placeholder="mail@example.com" />
+                </x-form.item>
+
+                <x-form.item>
+                    <x-form.label>Придумайте пароль</x-form.label>
+                    <x-form.input type="password" name="password" placeholder="*******" />
+                </x-form.item>
+
+                <x-form.item>
+                    <x-form.label>Повторите пароль</x-form.label>
+                    <x-form.input type="password" name="password_confirmation" placeholder="*******" />
+                </x-form.item>
+
+                <x-form.item>
+                    <x-form.check name="agreement">
+                        Внимательно прочитал и сердечно принимаю пользовательское соглашение.
+                    </x-form.check>
+                </x-form.item>
+
+                <x-button type="submit">
+                    Зарегистрироваться
+                </x-button>
+            </x-form>
+
+          
+        </x-card.body>
+    </x-card>
+
+    <x-slot:crosslink>
+        Уже зарегистрированы?
+
+        <x-link href="{{ route('login') }}">
+            Войти
+        </x-link>
+    </x-slot:crosslink>
+
+
+</x-layouts.auth>
+
+
+
+{{-- <x-layout>
     <div class="flex min-h-screen bg-gray-50 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
 
@@ -10,17 +66,23 @@
             
                     <x-card>
                         <x-card.body>
-                            <x-form >
+                            <x-form action="{{route('registration.store')}}" method="POST" >
 
 
                                 <x-form.item>
                                     <x-form.label>Ваш Имя</x-form.label>
                                     <x-form.input name="first_name" placeholder="Иван/Марья" autofocus />
+
+                                  
+
                                 </x-form.item>
             
                                 <x-form.item>
                                     <x-form.label>Ваш email</x-form.label>
                                     <x-form.input name="email" placeholder="email@mail.ru" />
+
+                                    
+                               
                                 </x-form.item>
             
                                 <x-form.item>
@@ -46,6 +108,12 @@
                             </x-form>
                         </x-card.body>
                     </x-card>
+
+                    <div class="pt-4 text-center text-sm text-gray-500">
+                        {{__('Уже есть Аккаунт???')}}
+                        <a href="{{ route('login') }}"
+                            class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">{{__('Войти')}}</a>
+                    </div>
                     <div class="relative mt-10">
                         <div class="absolute inset-0 flex items-center" aria-hidden="true">
                             <div class="w-full border-t border-gray-200"></div>
@@ -92,4 +160,4 @@
 
         </div>
     </div>
-</x-layout>
+</x-layout> --}}
