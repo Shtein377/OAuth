@@ -3,6 +3,12 @@
     {{__('Вход в Аккаунт')}}
 </x-slot:title>
 
+{{-- @auth
+<div class="py-4 text-center">
+    {{Auth::user()->first_name}}
+</div> 
+@endauth --}}
+
 <x-card>
     <x-card.body>
         <x-form action="{{ route('login.store') }}" method="POST">
@@ -10,7 +16,7 @@
 
             <x-form.item>
                 <x-form.label>{{ __('Введите email') }}</x-form.label>
-                <x-form.input name="email" placeholder="email@mail.ru" />
+                <x-form.text name="email" placeholder="email@mail.ru" />
 
 
 
@@ -18,7 +24,7 @@
 
             <x-form.item>
                 <x-form.label>{{ __('Введите пароль...') }}</x-form.label>
-                <x-form.input type="password" name="password" placeholder="*******" />
+                <x-form.text type="password" name="password" placeholder="*******" />
             </x-form.item>
 
 

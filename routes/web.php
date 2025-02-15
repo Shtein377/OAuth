@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 //use Illuminate\Support\Facades\View;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\User\SettingsController;
 
 
 Route::redirect('/','/registration');
@@ -14,3 +16,10 @@ Route::post('/registration',[RegistrationController::class,'store'])->name('regi
 
 Route::view('/login','login.index')->name('login');
 Route::post('/login',[LoginController::class,'store'])->name('login.store');
+
+Route::post('logout',[LogoutController::class,'logout'])->name('logout');
+
+Route::redirect('/user', '/user/settings')->name('user');
+Route::get('/user/settings', [SettingsController::class, 'index'])->name('user.settings');
+
+

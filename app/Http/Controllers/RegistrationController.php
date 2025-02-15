@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Registration\StoreRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -15,9 +16,12 @@ class RegistrationController extends Controller
         'password',
     ]);
 
-    User::query()->create($data);
+    $user = User::query()->create($data);
 
-    return redirect()->route('registration');
+
+    Auth::login($user);
+
+    return redirect()->route('user');
 
    }
 }

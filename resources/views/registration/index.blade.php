@@ -8,22 +8,22 @@
             <x-form action="{{ route('registration.store') }}" method="post">
                 <x-form.item>
                     <x-form.label>Ваше имя</x-form.label>
-                    <x-form.input name="first_name" placeholder="Иван" autofocus />
+                    <x-form.text name="first_name" placeholder="Иван" autofocus />
                 </x-form.item>
 
                 <x-form.item>
                     <x-form.label>Ваш email</x-form.label>
-                    <x-form.input name="email" placeholder="mail@example.com" />
+                    <x-form.text name="email" placeholder="mail@example.com" />
                 </x-form.item>
 
                 <x-form.item>
                     <x-form.label>Придумайте пароль</x-form.label>
-                    <x-form.input type="password" name="password" placeholder="*******" />
+                    <x-form.text type="password" name="password" placeholder="*******" />
                 </x-form.item>
 
                 <x-form.item>
                     <x-form.label>Повторите пароль</x-form.label>
-                    <x-form.input type="password" name="password_confirmation" placeholder="*******" />
+                    <x-form.text type="password" name="password_confirmation" placeholder="*******" />
                 </x-form.item>
 
                 <x-form.item>
