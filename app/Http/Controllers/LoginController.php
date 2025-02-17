@@ -13,8 +13,10 @@ class LoginController extends Controller
 {
     public function store(StoreRequest $request)
     {
-
-
+         //Метод проверки аутентифицированного пользователя
+        //  if(Auth::check()){
+        //     return redirect()->route('user');
+        //  }
 
         $data = $request->only(['email', 'password',]);
 

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\GenderEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,10 +20,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'online_at',
         'first_name',
         'middle_name',
         'last_name',
-        
+        'gender',
         'email',
         'password',
     ];
@@ -44,5 +47,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'online_at'=>'datetime',
+        'gender'=>GenderEnum::class,
     ];
+
+    public function getFullName():string
+    {
+        return implode('',array_filter([
+            $this->first_name,
+            $this->middle_name,
+            $this->last_name,
+
+        ]));
+    }
 }
