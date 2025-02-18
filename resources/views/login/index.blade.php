@@ -31,9 +31,18 @@
 
 
             <x-form.item>
-                <x-form.check name="remember">
-                    {{ __('Запомнить меня') }}
-                </x-form.check>
+                <div class="flex justify-between">
+                 <div>
+                    <x-form.check name="remember">
+                        {{ __('Запомнить меня') }}
+                    </x-form.check>
+                 </div>
+                 <div>
+                    <x-link class="text-sm" href="{{route('password')}}">
+                        {{__('Забыли пароль?')}}
+                    </x-link>
+                 </div>
+                </div>
             </x-form.item>
 
             <x-button type="submit">

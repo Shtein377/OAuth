@@ -27,6 +27,7 @@ class User extends Authenticatable
         'gender',
         'email',
         'password',
+        'password_at',
     ];
 
     /**
@@ -49,6 +50,7 @@ class User extends Authenticatable
         'password' => 'hashed',
         'online_at'=>'datetime',
         'gender'=>GenderEnum::class,
+        'password_at'=>'datetime',
     ];
 
     public function getFullName():string
@@ -60,4 +62,14 @@ class User extends Authenticatable
 
         ]));
     }
+
+    public function updatePassword(string $password):bool{
+       
+        
+        return $this->update([
+            'password' => $password,
+            'password_at'=>now(),
+        ]);
+    }
+
 }
