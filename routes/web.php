@@ -28,8 +28,8 @@ Route::middleware(RedirectIfAuthenticated::class)->group(function () {
     Route::view('/password','password.index')->name('password');
     Route::post('/password',[PasswordController::class,'store'])->name('password.store');
     Route::view('/password/confirm','password.confirm')->name('password.confirm');
-    Route::view('/password/{code}','password.edit')->name('password.edit');
-    Route::post('/password/{code}',[PasswordController::class,'update'])->name('password.update');
+    Route::get('/password/{password:uuid}', [PasswordController::class, 'edit'])->name('password.edit')->whereUuid('password');
+    Route::post('/password/{password:uuid}', [PasswordController::class, 'update'])->name('password.update')->whereUuid('password');
 });
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');

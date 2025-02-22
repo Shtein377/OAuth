@@ -7,7 +7,7 @@
     
     <x-card>
         <x-card.body>
-            <x-form action="{{ route('password.update', 123) }}" method="POST">
+            <x-form action="{{ route('password.update', $password->uuid) }}" method="post">
     
     
                 <x-form.item>
