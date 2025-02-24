@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -11,6 +12,8 @@ use App\Traits\BelongsToUser;
 class Password extends Model
 {
     use HasFactory;
+    use HasUuid;
+    use BelongsToUser;
 
     protected $fillable = [
         "uuid",
@@ -25,16 +28,9 @@ class Password extends Model
 
     ];
 
-    public static function booted(): void
-    {
-        static::creating(function (Password $password) {
-            $password->fill(['uuid' => uuid()]);
-        });
-    }
    
- public function user(){
-    return $this->belongsTo(User::class);
- }
+   
+ 
 
     public function updateStatus(PasswordStatusEnum $status): bool
     {

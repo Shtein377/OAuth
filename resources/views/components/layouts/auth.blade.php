@@ -9,10 +9,12 @@
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
 
            {{$slot}}
-
-            <div class="pt-4 text-center text-sm text-gray-500">
-               {{$crosslink}}
-            </div>
+@isset($crosslink)
+<div class="pt-4 text-center text-sm text-gray-500">
+    {{$crosslink}}
+ </div>
+@endisset
+            
             <div class="relative mt-10">
                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                     <div class="w-full border-t border-gray-200"></div>
