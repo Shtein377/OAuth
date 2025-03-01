@@ -86,5 +86,14 @@ class User extends Authenticatable
     }
 
 
+    
+    public function updateEmail(string $email): bool
+    {
+        return $this->update([
+            'email' => $email,
+            'email_confirmed_at' => now(),
+        ]);
+    }
+
 
 }

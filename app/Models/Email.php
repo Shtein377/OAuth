@@ -37,6 +37,13 @@ class Email extends Model
     }
 
 
+    
+    public function complete(): bool
+    {
+        return $this->updateStatus(EmailStatusEnum::completed);
+    }
+
+
     public function updateStatus(EmailStatusEnum $status): bool
     {
 
