@@ -49,6 +49,8 @@
                 {{ __('Войти') }}
             </x-button>
         </x-form>
+
+        @include('includes.social')
     </x-card.body>
 </x-card>
 

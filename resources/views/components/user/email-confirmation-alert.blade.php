@@ -1,3 +1,6 @@
+@if(Auth::user()->email)
+
+
 @unless (Auth::user()->isEmailConfirmed())
 
 <div class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
@@ -17,3 +20,5 @@
 </div>
     
 @endunless
+
+@endif

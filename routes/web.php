@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialController;
 use App\Models\Email;
 use Illuminate\Support\Facades\Route;
 //use Illuminate\Support\Facades\View;
@@ -17,6 +18,8 @@ use App\Http\Controllers\User\Settings\PasswordController as UserPasswordControl
 use App\Http\Controllers\PasswordController;
 use App\Notifications\Email\ConfirmEmailNotification;
 use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
+
 Route::redirect('/', '/registration');
 
 
@@ -53,6 +56,10 @@ Route::middleware(['auth', 'online'])->group(function () {
     Route::get('/user/settings/password', [UserPasswordController::class, 'edit'])->name('user.settings.password.edit');
     Route::post('/user/settings/password', [UserPasswordController::class, 'update'])->name('user.settings.password.update');
 });
+
+Route::get('/social/{driver}/redirect', [SocialController::class,'redirect'])->name('social.redirect');
+ 
+Route::get('/social/{driver}/callback', [SocialController::class, 'callback'])->name('social.callback');
 
 
 
