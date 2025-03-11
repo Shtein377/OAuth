@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Social\SocialDriverEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
