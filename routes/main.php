@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,3 +12,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome',['name'=>'Vasia']);
 // });
 Route::view('/', 'home.index')->name('home');
+
+Route::get('language/{language}',LanguageController::class )->name('language');

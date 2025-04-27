@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Cache;
+use PhpParser\Node\Stmt\Static_;
 
 /**
  * @property int $id
@@ -22,8 +23,11 @@ class Language extends Model
 
     public $incrementing = false;
     protected $fillable = [
-        'id', 'name',
-        'active', 'default', 'fallback',
+        'id',
+        'name',
+        'active',
+        'default',
+        'fallback',
         'date_format',
     ];
 
@@ -34,24 +38,89 @@ class Language extends Model
     ];
 
 
-    public function getStateText():string
+
+    public static function booted():void{
+        static::saved(function(self $model){
+
+            Cache::forget('languages');
+
+        });
+    }
+
+
+    public function getStateText(): string
     {
 
 
-     $state = [];
+        $state = [];
 
-     if($this->active){
-        $state[] = 'Активный';
-     }
+        if ($this->active) {
+            $state[] = 'Активный';
+        }
 
-     if($this->default){
-        $state[] = 'По умолчанию';
-     }
+        if ($this->default) {
+            $state[] = 'По умолчанию';
+        }
 
-     if($this->fallback){
-        $state[] = 'Резервный';
-     }
+        if ($this->fallback) {
+            $state[] = 'Резервный';
+        }
 
-     return implode(',',$state);
+        return implode(',', $state);
+    }
+
+    public static function findDefault(): self|null
+    {
+        return self::getActive()->firstWhere('default', true);
+    }
+
+    public static function findFallback(): self|null
+    {
+        return self::getActive()->firstWhere('fallback', true);
+    }
+
+
+    
+    public static function findActive(string $id): self
+    {
+        return self::getActive()
+        ->firstWhere('id', $id);
+    }
+
+
+    public static function getActive(): Collection
+    {
+        return Cache::remember(
+
+            key: 'languages',
+
+            ttl: now()->addDay(),
+
+            callback: function () 
+            {
+                return self::query()
+
+                    ->where('active', true)
+                    
+                    ->get();
+            }
+
+        );
+    }
+
+
+    public static function routePrefix(): string|null
+    {
+
+        $activeLanguages = self::getActive();
+        $prefix = request()->segment(1);
+
+
+        if ($activeLanguages->doesntContain('id', $prefix)) {
+            $prefix = null;
+        }
+
+
+        return $prefix;
     }
 }

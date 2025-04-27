@@ -55,8 +55,9 @@ class LanguageController extends Controller
     {
         $validated = $request->validated();
 
-        
-        $language->update(array_merge($validated, [
+
+        $language->update(array_merge($validated,
+         [
             'active' => $validated['active'] ?? false,
             'default' => $validated['default'] ?? false,
             'fallback' => $validated['fallback'] ?? false,

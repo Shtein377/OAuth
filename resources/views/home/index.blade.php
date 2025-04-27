@@ -6,6 +6,6 @@
 @section('main.content')
 
 
-Контент главной страницы
+Текущий язык: {{app()->getLocale()}}
 
 @endsection
