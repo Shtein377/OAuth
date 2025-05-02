@@ -9,6 +9,12 @@
         <x-card-title>
             {{__('Вход')}}
         </x-card-title>
+
+      <x-slot name="right">
+        <a href="{{route('register')}}">
+          {{__('Регистрация')}}
+        </a>
+      </x-slot>
     </x-card-header>
 
     <x-card-body>

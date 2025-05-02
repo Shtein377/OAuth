@@ -14,7 +14,7 @@
               <a class="nav-link  fs-5" aria-current="page" href="#">{{__('Главная')}}</a>
             </li>
             <li class="nav-item fs-5">
-              <a class="nav-link" href="#">{{__('Блог')}}</a>
+              <a class="nav-link" href="{{route('blog')}}">{{__('Блог')}}</a>
             </li>
             <li class="nav-item fs-5">
               <a class="nav-link" href="#">{{__('Блог')}}</a>
