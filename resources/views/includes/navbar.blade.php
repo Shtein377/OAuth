@@ -10,10 +10,22 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link {{active_link('home', 'text-primary')}}" aria-current="page" >
-                {{__('Главная')}}
+                {{__('navbar.home')}}
             </a>
           </li>
           
+
+          <li class="nav-item">
+            <a href="{{route('placeholders')}}" class="nav-link {{active_link('placeholders', 'text-primary')}}" aria-current="page" >
+                {{__('navbar.placeholders')}}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('pluralization')}}" class="nav-link {{active_link('pluralization', 'text-primary')}}" aria-current="page" >
+                {{__('navbar.pluralization')}}
+            </a>
+          </li>
          
         </ul>
 

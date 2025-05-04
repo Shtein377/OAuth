@@ -16,14 +16,20 @@ class InstallLanguagesCommand extends Command
     public function handle()
     {
 
-        $this->createLanguages();
+        $this->installLanguages();
 
         $this->info('Языки установленны');
     }
 
 
-    private function createLanguages()
+    private function installLanguages()
     {
+
+
+        if (Language::query()->exists()) {
+            return;
+        }
+
         $templates = [
 
             [
@@ -51,7 +57,7 @@ class InstallLanguagesCommand extends Command
             ],
 
             [
-                'id' => 'it',
+                'id' =>'it',
                 'name' => 'italian',
                 'active' => false,
                 'default' => false,

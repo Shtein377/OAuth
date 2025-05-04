@@ -45,6 +45,12 @@ class Language extends Model
             Cache::forget('languages');
 
         });
+
+        static::deleted(function(self $model){
+
+            Cache::forget('languages');
+
+        });
     }
 
 
