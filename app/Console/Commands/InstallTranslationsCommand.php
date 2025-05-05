@@ -2,10 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Translation;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
-use Spatie\TranslationLoader\LanguageLine;
+// use Spatie\TranslationLoader\LanguageLine;
 
 class InstallTranslationsCommand extends Command
 {
@@ -107,7 +108,7 @@ class InstallTranslationsCommand extends Command
 
   private function createTranslations(array $translations):void{
 
-    $models = LanguageLine::query()->get();
+    $models = Translation::query()->get();
 
     foreach($translations as $group => $keys){
 
@@ -115,7 +116,7 @@ class InstallTranslationsCommand extends Command
            
             $model = $models
             ->where('group',$group)
-            ->where('key',$key)->first() ?: new LanguageLine;
+            ->where('key',$key)->first() ?: new Translation;
             
 
 

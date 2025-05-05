@@ -8,23 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up(): void
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
             $table->string('group')->index();
             $table->string('key');
-            $table->jsonb('text');
-
-            $table->unique(['group', 'key']);
+            $table->json('text');
+            $table->timestamps();
+            $table->unique(['group','key']);
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down(): void
     {

@@ -6,19 +6,23 @@ use App\Models\Translation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Translations\SaveTranslationRequest;
 use Illuminate\Http\Request;
-use Spatie\TranslationLoader\LanguageLine;
+// use Spatie\TranslationLoader\LanguageLine;
 
 class TranslationController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
-     
+   
+
+     //dd($query->latest('id')->toSql());
+
+     $translations = Translation::query()
+            ->filter($request->all())
+            ->latest()->paginate(21);
 
         return view('admin.translations.index', [
-         'translations' => LanguageLine::query()
-         ->latest('id')
-         ->paginate(21)
+            'translations' => $translations,
         ]);
         
     }
@@ -27,7 +31,7 @@ class TranslationController extends Controller
     public function create()
     {
         return view('admin.translations.create', [
-            'translation' => new LanguageLine,
+            'translation' => new Translation,
         ]);
     }
 
@@ -35,32 +39,35 @@ class TranslationController extends Controller
     public function store(SaveTranslationRequest $request)
     {
         // dd($request->all());
-        dd($request->validated());
+        // dd($request->validated());
         Translation::query()->create($request->validated());
-
+       
+        return to_route('admin.translations.index');
        
     }
 
    
-    public function show(Translation $translation)
-    {
-        //
-    }
+  
 
     public function edit(Translation $translation)
     {
-        //
+        return view('admin.translations.edit', [
+            'translation' => $translation,
+        ]);
     }
 
   
-    public function update(Request $request, Translation $translation)
+    public function update(SaveTranslationRequest $request, Translation $translation)
     {
-        //
+        $translation->update($request->validated());
+       
+        return to_route('admin.translations.index');
     }
 
    
     public function destroy(Translation $translation)
     {
-        //
+        $translation->delete();
+        return to_route('admin.translations.index');
     }
 }
