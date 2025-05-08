@@ -23,6 +23,15 @@
                 {{__('Переводы')}}
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('admin.posts.index')}}" class="nav-link {{active_link('admin.posts*', 'text-primary')}}" aria-current="page" >
+                {{__('Посты')}}
+            </a>
+          </li>
+
+
+
           
           
          

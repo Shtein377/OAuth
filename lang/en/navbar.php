@@ -6,4 +6,5 @@ return [
     'placeholders'=>'Fill out',
 
     'pluralization'=>'pluralization',
+    'blog' => 'blog',
 ];

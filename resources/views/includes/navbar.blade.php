@@ -26,6 +26,13 @@
                 {{__('navbar.pluralization')}}
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="{{route('blog')}}" class="nav-link {{active_link('blog', 'text-primary')}}" aria-current="page" >
+                {{__('navbar.blog')}}
+            </a>
+          </li>
          
         </ul>
 
