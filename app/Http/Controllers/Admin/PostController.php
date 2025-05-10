@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Posts\SavePostRequest;
+use App\Models\Language;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -54,9 +55,20 @@ class PostController extends Controller
 
     public function update(SavePostRequest $request, Post $post)
     {
-        $post->update($request->validated());
 
-        return to_route('admin.posts.index');
+      
+
+        $keys = Language::query()->pluck('id')->toArray();
+
+        $default = array_fill_keys($keys,null);
+       
+        $title = array_merge($default, $request->validated('title'));
+
+        $content = array_merge($default, $request->validated('title'));
+
+        $post->update(compact('title','content'));
+
+        return back();
     }
 
   
