@@ -15,16 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->timestamp('online_at')->nullable();
-
             $table->string('name')->nullable()->comment('Имя');
-            
-
-
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_confirmed_at')->nullable();
-
             $table->string('password');
-            
             $table->rememberToken();
         });
     }

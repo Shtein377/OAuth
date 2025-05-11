@@ -29,6 +29,7 @@ class User extends Authenticatable
         'password',
         'password_at',
         'email_confirmed_at',
+        'admin',
     ];
 
     /**
@@ -53,6 +54,7 @@ class User extends Authenticatable
         'gender' => GenderEnum::class,
         'password_at' => 'datetime',
         'email_confirmed_at' => 'datetime',
+        'admin'=>'boolean',
     ];
 
     public function getFullName(): string

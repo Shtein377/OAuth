@@ -10,7 +10,7 @@
         "laravel-lang/lang": "^14.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/socialite": "^5.18",
+        "laravel/socialite": "^5.20",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.6",
         "socialiteproviders/vkontakte": "^5.0"
