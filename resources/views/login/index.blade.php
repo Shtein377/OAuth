@@ -47,5 +47,5 @@
         </x-form>
     </x-card-body>
 </x-card>
-    
+
 @endsection
